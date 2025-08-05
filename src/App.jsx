@@ -1,13 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+const Card = () => {
+  return (
+    <h2>Card</h2>
+  )
+}
 
 const App = () => {
-  const [count, setCount] = useState(0)
 
   return (
-    <h2>App</h2>
+    <div>
+      <h2>App</h2>
+
+      <Card />
+
+    </div>
   )
 }
 export default App
