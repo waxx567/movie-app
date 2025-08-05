@@ -1,6 +1,6 @@
-const Card = () => {
+const Card = ({ title }) => {
   return (
-    <h2>Card</h2>
+    <h2>{title}</h2>
   )
 }
 
@@ -10,7 +10,11 @@ const App = () => {
     <div>
       <h2>App</h2>
 
-      <Card />
+      <Card title="One"/>
+
+      <Card title="Two"/>
+
+      <Card title="Three"/>
 
     </div>
   )
