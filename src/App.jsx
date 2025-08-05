@@ -1,21 +1,18 @@
 const Card = ({ title }) => {
   return (
-    <h2>{title}</h2>
+    <div className="card">
+      <h2>{title}</h2>
+    </div>
   )
 }
 
 const App = () => {
 
   return (
-    <div>
-      <h2>App</h2>
-
-      <Card title="One"/>
-
-      <Card title="Two"/>
-
-      <Card title="Three"/>
-
+    <div className="card-container">
+      <Card title="Get Shorty" rating={4} isCool={true}/>
+      <Card title="Be Cool"/>
+      <Card title="Rum Punch"/>
     </div>
   )
 }
