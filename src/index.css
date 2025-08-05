@@ -33,3 +33,15 @@ h2 {
   background-color: #31363f;
   min-height: 100px;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  width: 100%;
+  text-align: right;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #f3f3f3;
+  cursor: pointer;
+}
