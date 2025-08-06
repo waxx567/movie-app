@@ -7,7 +7,8 @@ const App = () => {
 
       <div className='wrapper'>
         <header>
-          <h1>Find the <span className='text-gradient'>Movies</span> You Want without the Hassle</h1>
+          <img src="./hero.png" alt="Hero Banner" />
+          <h1>Find the <span className='text-gradient'>Movies</span> You'll Love Without the Hassle</h1>
         </header>
 
         <p>Search</p>
