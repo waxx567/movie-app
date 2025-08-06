@@ -152,9 +152,16 @@
   font-family: "Bebas Neue", sans-serif;
 }
 
-@utility hide-scrollbar {
+/* @utility hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+} */
+@utility hide-scrollbar {
+  overflow: hidden;
 
   &::-webkit-scrollbar {
     display: none;
