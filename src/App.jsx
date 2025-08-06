@@ -8,13 +8,9 @@ const Card = ({ title }) => {
     console.log(`${title} has been liked: ${hasLiked}`)
   }), [hasLiked];
 
-  useEffect(() => {
-    console.log("Card Rendered")
-  }), [];
-
   return (
     <div className="card" onClick={() => setCount(count + 1)}>
-      <h2>{title} <br/> {count}</h2>
+      <h2>{title} <br/> {count || null}</h2>
 
       <button onClick={() => setHasLiked(!hasLiked)}>
         {hasLiked ? '❤️' : '❤︎'}
