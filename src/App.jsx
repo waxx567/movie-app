@@ -40,7 +40,7 @@ const App = () => {
         return;
       }
 
-      setMovieList(data.results);
+      setMovieList(data.results || []);
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Error fetching movies. Please try again later.');
@@ -66,7 +66,18 @@ const App = () => {
 
         <section className='all-movies'>
           <h2>All Movies</h2>
-         {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+          
+          {isLoading ? (
+            <p className='text-white'>Loading...</p>
+          ) : errorMessage ? (
+            <p className='text-red-500'>{errorMessage}</p>
+          ) : (
+            <ul>
+              {movieList.map((movie) => (
+                <p>{movie.title}</p>
+              ))}
+            </ul>
+          )}
         </section>
       </div>
     </main>
