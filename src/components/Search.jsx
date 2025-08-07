@@ -8,10 +8,11 @@ const Search = ({ searchTerm, setSearchTerm }) => {
 
         <input 
           type="text"
-          placeholder='Search throuh 300+ movies online'
+          placeholder='Search through 300+ movies online'
           value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <h1 className='fancy-text'>{searchTerm}</h1>
       </div>
     </div>
   )
