@@ -36,6 +36,9 @@ const App = () => {
         setMovieList([]);
         return;
       }
+
+      setMovieList(data.results);
+      setErrorMessage('');
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Error fetching movies. Please try again later.');
