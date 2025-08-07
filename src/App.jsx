@@ -74,7 +74,7 @@ const App = () => {
           ) : (
             <ul>
               {movieList.map((movie) => (
-                <p>{movie.title}</p>
+                <p className='text-white'>{movie.title}</p>
               ))}
             </ul>
           )}
