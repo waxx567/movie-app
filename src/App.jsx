@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Search from './components/Search'
+import { renderToPipeableStream } from 'react-dom/server';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3/';
 
@@ -16,7 +17,7 @@ const API_OPTIONS = {
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [movies, setMovies] = useState([]);
+  const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchMovies = async () => {
@@ -32,6 +33,8 @@ const App = () => {
       
       if(data.Response === 'false') {
         setErrorMessage(data.Error || 'Error fetching movies. Please try again later.');
+        setMovieList([]);
+        return;
       }
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
