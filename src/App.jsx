@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Search from './components/Search'
-import { renderToPipeableStream } from 'react-dom/server';
+import Spinner from './components/Spinner'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3/';
 
