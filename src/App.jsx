@@ -1,8 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Search from './components/Search'
+
+const API_BASE_URL = 'https://api.themoviedb.org/3/'
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const storedSearchTerm = localStorage.getItem('searchTerm');
+    if (storedSearchTerm) {
+      setSearchTerm(storedSearchTerm);
+    }
+  }, []);
 
   return (
     <main>
