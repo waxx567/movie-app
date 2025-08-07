@@ -68,7 +68,7 @@ const App = () => {
           <h2>All Movies</h2>
           
           {isLoading ? (
-            <p className='text-white'>Loading...</p>
+            <Spinner />
           ) : errorMessage ? (
             <p className='text-red-500'>{errorMessage}</p>
           ) : (
