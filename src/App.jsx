@@ -22,18 +22,17 @@ const App = () => {
     try {
       const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
       const response = await fetch(endpoint, API_OPTIONS);
-      const json = await response.json();
-      console.log(json);
+      
+      alert(response);
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage(`Error fetching movies: ${error}`);
     }
   }
 
-  useEffect() => {
+  useEffect(() => {
     fetchMovies();
-    }
-  }, [];
+  }, []);
 
   return (
     <main>
