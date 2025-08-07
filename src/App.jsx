@@ -20,21 +20,20 @@ const App = () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}search/movie?query=${searchTerm}`, API_OPTIONS);
-      const result = await response.json();
-      console.log(result);
+      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const response = await fetch(endpoint, API_OPTIONS);
+      const json = await response.json();
+      console.log(json);
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage(`Error fetching movies: ${error}`);
     }
   }
 
-  useEffect(() => {
-    const storedSearchTerm = localStorage.getItem('searchTerm');
-    if (storedSearchTerm) {
-      setSearchTerm(storedSearchTerm);
+  useEffect() => {
+    fetchMovies();
     }
-  }, []);
+  }, [];
 
   return (
     <main>
@@ -48,7 +47,8 @@ const App = () => {
         </header>
 
         <section className='all-movies'>
-          <h2>All Movies</h2>>
+          <h2>All Movies</h2>
+         {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
         </section>
       </div>
     </main>
