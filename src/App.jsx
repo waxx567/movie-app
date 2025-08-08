@@ -72,14 +72,18 @@ const App = () => {
       <div className='wrapper'>
         <header>
           <img className='logo' src="./logo.png" alt="Logo" />
+
           <img src="./hero.png" alt="Hero Banner" />
+
           <h1>Find the <span className='text-gradient'>Movies</span> You'll Love Without the Hassle</h1>
+          
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
 
         <section className='all-movies'>
           <h2 className='mt-[40px]'>Trending Movies</h2>
           
+          {/* Show loading spinner or error message */}
           {isLoading ? (
             <Spinner />
           ) : errorMessage ? (
