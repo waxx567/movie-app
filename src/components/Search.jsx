@@ -12,7 +12,6 @@ const Search = ({ searchTerm, setSearchTerm }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <h1 className='fancy-text'>{searchTerm}</h1>
       </div>
     </div>
   )
