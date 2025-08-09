@@ -1,9 +1,9 @@
-# Movie app
+# Movie App
 
 ## 🤖 Introduction
 
 Built with React.js for the user interface, Appwrite for backend services, and styled with TailwindCSS, this Movie App lets users browse trending movies, search titles, and explore content using the TMDB API. It features a responsive layout and a sleek, modern design.
-Created based on this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbzezudt6s2/Movie-App-w%2F-React?node-id=2-2&p=f&t=r1sN8UH2lECPofAY-0).
+I followed this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbzezudt6s2/Movie-App-w%2F-React?node-id=2-2&p=f&t=r1sN8UH2lECPofAY-0).
 
 ## ⚙️ Tech Stack
 
@@ -16,7 +16,11 @@ Created based on this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbz
 ## 🔋 Features
 
 👉 Browse All Movies: Explore a wide range of movies available on the platform.
+
 👉 Search Movies: Easily search for specific movies using a search function.
+
 👉 Trending Movies Algorithm: Displays trending movies based on a dynamic algorithm.
+
 👉 Modern UI/UX: A sleek and user-friendly interface designed for a great experience.
+
 👉 Responsiveness: Fully responsive design that works seamlessly across devices.
