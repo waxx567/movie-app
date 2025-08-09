@@ -33,6 +33,7 @@ const App = () => {
     setIsLoading(true);
     setErrorMessage('');
 
+    // Fetch movies
     try {
       const endpoint = query 
         ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` 
@@ -40,6 +41,7 @@ const App = () => {
 
       const response = await fetch(endpoint, API_OPTIONS);
       
+      // Handle errors
       if(!response.ok) {
         throw new Error('Failed to fetch movies');
       }
@@ -47,14 +49,17 @@ const App = () => {
       const data = await response.json();
       
       if(data.Response === 'false') {
-        setErrorMessage(data.Error || 'Error fetching movies. Please try again later.');
+        setErrorMessage(data.Error || 'Failed to fetch movies. Please try again later.');
         setMovieList([]);
         return;
       }
 
       setMovieList(data.results || []);
 
-      updateSearchCount();
+      // Update search count
+      if(query && data.results.length > 0) {
+        await updateSearchCount(query, data.results[0]);
+      }
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Error fetching movies. Please try again later.');
