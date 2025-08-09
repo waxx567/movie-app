@@ -23,7 +23,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
 
-  // Debounce the search term to prevent too many API calls
+  // Debounce the search term to prevent too many API calls by waiting for 1 second once the user stops typing
   useDebounce(() => {     
     setDebouncedSearchTerm(searchTerm);
   }, 1000, [searchTerm]);
@@ -81,9 +81,9 @@ const App = () => {
         </header>
 
         <section className='all-movies'>
-          <h2 className='mt-[40px]'>Trending Movies</h2>
+          <h2 className='mt-[40px]'>Popular</h2>
           
-          {/* Show loading spinner or error message */}
+          {/* Show loading spinner or error message or movie list */}
           {isLoading ? (
             <Spinner />
           ) : errorMessage ? (

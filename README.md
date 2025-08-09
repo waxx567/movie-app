@@ -1,3 +1,7 @@
+# Movie app
+
+This app was created based on this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbzezudt6s2/Movie-App-w%2F-React?node-id=2-2&p=f&t=r1sN8UH2lECPofAY-0)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
