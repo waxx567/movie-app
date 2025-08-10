@@ -10,6 +10,12 @@ const client = new Client()
 
 const database = new Databases(client);
 
+/**
+ * Updates the count of a search term in the database, or creates a new document if it doesn't exist
+ * @param {string} searchTerm - The search term to update
+ * @param {object} movie - The movie object from the TMDB API
+ */
+
 export const updateSearchCount = async (searchTerm, movie) => {
     // 1. Use Appwrite SDK to see if the search term already exists in the database
     try {
@@ -35,7 +41,22 @@ export const updateSearchCount = async (searchTerm, movie) => {
         }
     } catch (error) {
         console.error(error);         
+    }    
+}
+
+/**
+ * Fetches the top 10 trending movies from the database based on the count of times they were searched
+ * @returns {array} An array of objects containing the movie's search term, count, movie_id, and poster_url
+ */
+export const getTrendingMovies = async () => {
+    try {
+        const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
+            Query.limit(10),
+            Query.orderDesc('count'),
+        ]);
+
+        return result.documents;
+    } catch (error) {
+        console.error(error);
     }
-    
-    
 }
