@@ -17,6 +17,22 @@ const API_OPTIONS = {
   }
 }
 
+/**
+ * The main App component that handles the search input, fetches movies
+ * from the TMDB API, and renders the movie list.
+ *
+ * It also handles errors encountered during the fetch process and updates
+ * the search count in the database for a successful query.
+ *
+ * The component renders a search bar, a list of movies, and a loading spinner
+ * or error message if there's an issue fetching the movies.
+ *
+ * The component uses the `useDebounce` hook from `react-use` to debounce the
+ * search term to prevent too many API calls by waiting for 1 second once the
+ * user stops typing.
+ *
+ * The component fetches movies when the search term changes using the `useEffect` hook.
+ */
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -28,6 +44,15 @@ const App = () => {
   useDebounce(() => {     
     setDebouncedSearchTerm(searchTerm);
   }, 1000, [searchTerm]);
+
+/**
+ * Fetches movies from the TMDB API based on the search query.
+ * If no query is provided, it fetches popular movies by default.
+ * Updates the movie list state and handles any errors encountered during the fetch process.
+ * Also updates the search count in the database for a successful query.
+ *
+ * @param {string} query - The search term for querying movies. Defaults to an empty string.
+ */
 
   const fetchMovies = async (query = '') => {
     setIsLoading(true);
