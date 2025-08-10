@@ -1,5 +1,10 @@
 import React from 'react'
 
+/**
+ * A card component to display a movie's information
+ * @param {{title: string, vote_average: number, poster_path: string, release_date: string, original_language: string}} movie
+ * @returns {React.ReactElement}
+ */
 const MovieCard = ({ movie: 
     { title, vote_average, poster_path, release_date, original_language } 
 }) => {
