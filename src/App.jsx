@@ -3,7 +3,7 @@ import Search from './components/Search'
 import Spinner from './components/Spinner'
 import MovieCard from './components/MovieCard';
 import { useDebounce } from 'react-use';
-import { updateSearchCount } from './appwrite.js';
+import { getTrendingMovies, updateSearchCount } from './appwrite.js';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3/';
 
@@ -17,28 +17,26 @@ const API_OPTIONS = {
   }
 }
 
+
 /**
- * The main App component that handles the search input, fetches movies
- * from the TMDB API, and renders the movie list.
+ * The main application component that manages the state and logic for fetching
+ * and displaying movies. It handles search input, debouncing, and API interactions
+ * to fetch movies from the TMDB API. The component also displays a loading spinner
+ * or error message based on the fetch status.
  *
- * It also handles errors encountered during the fetch process and updates
- * the search count in the database for a successful query.
- *
- * The component renders a search bar, a list of movies, and a loading spinner
- * or error message if there's an issue fetching the movies.
- *
- * The component uses the `useDebounce` hook from `react-use` to debounce the
- * search term to prevent too many API calls by waiting for 1 second once the
- * user stops typing.
- *
- * The component fetches movies when the search term changes using the `useEffect` hook.
+ * @returns {JSX.Element} The JSX element representing the main application interface,
+ * which includes a search bar, a list of movie cards, and possibly a loading spinner
+ * or error message.
  */
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [movieList, setMovieList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  
+  const [movieList, setMovieList] = useState([]);  
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   // Debounce the search term to prevent too many API calls by waiting for 1 second once the user stops typing
   useDebounce(() => {     
@@ -53,7 +51,6 @@ const App = () => {
  *
  * @param {string} query - The search term for querying movies. Defaults to an empty string.
  */
-
   const fetchMovies = async (query = '') => {
     setIsLoading(true);
     setErrorMessage('');
@@ -93,10 +90,29 @@ const App = () => {
     }
   }
 
+/**
+ * Loads the trending movies by fetching the top 5 trending movies
+ * from the database and updates the trendingMovies state.
+ * Logs an error message if the fetching fails.
+ */
+  const loadTrendingMovies = async () => {
+    try {
+      const movies = await getTrendingMovies();
+      setTrendingMovies(movies);
+    } catch (error) {
+      console.error(`Error fetching trending movies: ${error}`);
+    }
+  }
+
   // Fetch movies when the search term changes
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
+
+  // Fetch trending movies when the component mounts
+  useEffect(() => {
+    loadTrendingMovies();
+  }, []);
 
   return (
     <main>
@@ -113,8 +129,22 @@ const App = () => {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
 
+        {trendingMovies.length > 0 && (
+          <section className='trending'>
+            <h2>Trending</h2>
+            <ul>
+              {trendingMovies.map((movie, index) => (
+                <li key={movie.$id}>
+                  <p>{index + 1}</p>
+                  <img src={movie.poster_url} alt={movie.title} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <section className='all-movies'>
-          <h2 className='mt-[40px]'>Popular</h2>
+          <h2>Popular</h2>
           
           {/* Show loading spinner or error message or movie list */}
           {isLoading ? (

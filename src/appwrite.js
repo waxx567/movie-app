@@ -15,7 +15,6 @@ const database = new Databases(client);
  * @param {string} searchTerm - The search term to update
  * @param {object} movie - The movie object from the TMDB API
  */
-
 export const updateSearchCount = async (searchTerm, movie) => {
     // 1. Use Appwrite SDK to see if the search term already exists in the database
     try {
@@ -45,13 +44,13 @@ export const updateSearchCount = async (searchTerm, movie) => {
 }
 
 /**
- * Fetches the top 10 trending movies from the database based on the count of times they were searched
+ * Fetches the top 5 trending movies from the database based on the count of times they were searched
  * @returns {array} An array of objects containing the movie's search term, count, movie_id, and poster_url
  */
 export const getTrendingMovies = async () => {
     try {
         const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
-            Query.limit(10),
+            Query.limit(5),
             Query.orderDesc('count'),
         ]);
 
