@@ -27,6 +27,6 @@ I followed this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbzezudt6
 
 👉 Responsiveness: Fully responsive design that works seamlessly across devices.
 
-### Dev Notes
+## 🤸 Developer Notes
 
 `npm run dev`
