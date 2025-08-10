@@ -1,5 +1,12 @@
 import React from 'react'
 
+/**
+ * A component that displays a loading animation using an SVG spinner.
+ *
+ * It is based on the Tailwind CSS component of the same name.
+ *
+ * @returns {JSX.Element} The JSX element representing the spinner.
+ */
 const Spinner = () => {
   return (
     
