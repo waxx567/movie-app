@@ -2,6 +2,8 @@
 
 ## 🤖 Introduction
 
+See the project [here](https://movies/fivefiftyfive.io).
+
 Built with React.js for the user interface, Appwrite for backend services, and styled with TailwindCSS, this Movie App lets users browse trending movies, search titles, and explore content using the TMDB API. It features a responsive layout and a sleek, modern design.
 I followed this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbzezudt6s2/Movie-App-w%2F-React?node-id=2-2&p=f&t=r1sN8UH2lECPofAY-0).
 
@@ -24,3 +26,7 @@ I followed this [Figma design](https://www.figma.com/design/kdu6x1bqzyCMbzezudt6
 👉 Modern UI/UX: A sleek and user-friendly interface designed for a great experience.
 
 👉 Responsiveness: Fully responsive design that works seamlessly across devices.
+
+### Dev Notes
+
+`npm run dev`
